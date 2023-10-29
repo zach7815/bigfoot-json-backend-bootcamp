@@ -1,4 +1,4 @@
-const { readFile } = require('fs/promises')
+import {readFile} from 'fs/promises'
 
 const getSightings = async () => {
   // Retrieve sightings.json file contents as string
@@ -8,6 +8,4 @@ const getSightings = async () => {
 };
 
 
-module.exports = {
-  getSightings
-}
+export default getSightings

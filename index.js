@@ -1,9 +1,15 @@
-const express = require('express')
-const { getSightings } = require('./utils.js')
-require('dotenv').config()
+import  express from 'express';
+import getSightings from './utils.js'
+import cors from 'cors'
+import path from 'path'
 
-const PORT = process.env.PORT;
+import dotenv from 'dotenv'
+
+const PORT = process.env.PORT||3000;
 const app = express();
+const envFilePath = '.env';
+dotenv.config({ path: path.normalize(envFilePath) });
+app.use(cors())
 
 app.get("/sightings", async (req, res) => {
   const sightings = await getSightings();
