@@ -6,10 +6,12 @@ import pg from 'pg';
 import dotenv from 'dotenv';
 
 
-const {Client}= pg;
+const {Pool}= pg;
 const PORT = process.env.PORT || 3000;
 const app = express();
 const envFilePath = '.env';
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 
 const pgConnectionConfigs = {
@@ -18,9 +20,9 @@ const pgConnectionConfigs = {
   database:'Zach',
   port:5432,
 }
-const client= new Client(pgConnectionConfigs);
+const pool= new Pool(pgConnectionConfigs);
 
-client.connect();
+pool.connect()
 
 const whenQueryDone= (error, result)=>{
   if(error){
@@ -28,14 +30,17 @@ const whenQueryDone= (error, result)=>{
   }
 
   else{
-    console.log(result.rows);
+    console.log(result.row);
   }
-  client.end()
+  pool.end()
 }
 
-const sqlQuery= 'SELECT * FROM students';
+const inputData = ['Eric', 'Marsh', 874480753, true];
 
-client.query(sqlQuery, whenQueryDone);
+// in this example, $1 is going to be replaced with 'Eric'
+const sqlQuery = 'INSERT INTO students (first_name, last_name, mobile, gender) VALUES ($1, $2, $3, $4)';
+
+pool.query(sqlQuery, inputData, whenQueryDone);
 
 
 
