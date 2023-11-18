@@ -1,6 +1,6 @@
 import express from 'express';
-import getSightings from '../utils.js';
-import searchRecordByReportNumber from '../findCase.js';
+import getSightings from '../utils.mjs';
+import searchRecordByReportNumber from '../findCase.mjs';
 
 const DefaultRouter = express.Router();
 

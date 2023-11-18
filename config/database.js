@@ -1,9 +1,10 @@
-module.exports = {
+const config = {
   "development": {
-    "username": "Zach",
+    "username": "zachariahkozlowski-best",
     "password": null,
     "database": "BigFoot_Sightings",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
 }
+export default config;

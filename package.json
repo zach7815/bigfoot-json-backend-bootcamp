@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "commonjs",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.mjs"
   },
   "dependencies": {
     "cors": "^2.8.5",

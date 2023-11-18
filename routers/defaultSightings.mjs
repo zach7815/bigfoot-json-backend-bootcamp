@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import SightingController from '../controllers/sightings.controller.js';
+import SightingController from '../controllers/sightings.controller.mjs';
 
 class SightingsRouter {
   static path = '/sightings';
